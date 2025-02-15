@@ -208,6 +208,136 @@ NEWLINE
 - Extienda con operadores adicionales, números de punto flotante o variables.
 
 
+### EJERCICIO 4
+# Analizador Léxico para Operaciones Matemáticas
+
+## Descripción
+Este proyecto es un analizador léxico escrito en **Lex (Flex)** que reconoce operadores matemáticos básicos y números enteros. Está diseñado para ser usado en un compilador o intérprete simple.
+
+## Tokens Reconocidos
+El analizador léxico identifica los siguientes tokens:
+
+| Token       | Símbolo | Descripción              |
+|------------|---------|--------------------------|
+| `NUMBER`   | `[0-9]+` | Números enteros          |
+| `ADD`      | `+`     | Operador de suma         |
+| `SUB`      | `-`     | Operador de resta        |
+| `MUL`      | `*`     | Operador de multiplicación |
+| `DIV`      | `/`     | Operador de división     |
+| `ABS`      | `|`     | Valor absoluto           |
+| `EOL`      | `\n`    | Fin de línea             |
+
+## Requisitos
+Para compilar y ejecutar este programa, necesitas tener **Flex** y **GCC** instalados en tu sistema. Puedes instalarlos con:
+
+- **Linux (Ubuntu/Debian):**
+  ```sh
+  sudo apt install flex gcc
+  ```
+- **MacOS (Homebrew):**
+  ```sh
+  brew install flex
+  ```
+
+## Instalación y Uso
+1. Guarda el código en un archivo llamado `token.l`.
+2. Abre una terminal y compila el analizador léxico con:
+   ```sh
+   flex token.l
+   gcc lex.yy.c -o token -lfl
+   ```
+3. Ejecuta el programa con:
+   ```sh
+   ./token
+   ```
+4. Introduce expresiones matemáticas como:
+   ```
+   3 + 5 * 2
+   ```
+   Luego presiona **Enter** para ver los tokens generados.
+
+## Ejemplo de Entrada y Salida
+### **Entrada:**
+```
+10 + 20 * 3
+```
+### **Salida Esperada:**
+```
+258 = 10
+259
+258 = 20
+261
+258 = 3
+```
+Donde:
+- `258 = 10` → Número (10)
+- `259` → Suma (`+`)
+- `258 = 20` → Número (20)
+- `261` → Multiplicación (`*`)
+- `258 = 3` → Número (3)
+
+```
+Luego, recompila el programa siguiendo los pasos anteriores.
+
+```
+### EJERCICIO 5
+# Clasificador de Números en Lex
+
+Este proyecto es un analizador léxico en **Lex** que clasifica los números ingresados por el usuario en diferentes categorías:
+- **Números enteros** (ejemplo: `42`)
+- **Números decimales** (ejemplo: `3.14`)
+- **Números complejos** (ejemplo: `2+3i`, `-1.5j`, `4i`)
+- Detecta caracteres desconocidos cuando se ingresan letras adicionales o caracteres no válidos.
+
+## Requisitos
+Para ejecutar este programa necesitas:
+- Un sistema basado en **Linux** o **MacOS** 
+- Flex (instalar con `sudo apt install flex` en Debian/Ubuntu)
+- Un compilador de C como **gcc**
+
+## Instalación y Ejecución
+
+1. **Guarda el código** en un archivo llamado `complejos.l`.
+2. **Genera el código en C** ejecutando:
+   ```sh
+   flex complejos.l
+   ```
+3. **Compila el código** con:
+   ```sh
+   gcc lex.yy.c -o complejos -lfl
+   ```
+4. **Ejecuta el analizador** con:
+   ```sh
+   ./complejos
+   ```
+   Luego, ingresa los números y el programa los clasificará correctamente.
+
+## Uso
+Cuando el programa se ejecuta, puedes ingresar números y obtendrás una clasificación automática. Ejemplos:
+```
+Ingrese números para clasificar (Ctrl+D para salir):
+42
+"42" es un número entero.
+3.14
+"3.14" es un número decimal.
+2+3i
+"2+3i" es un número complejo.
+hello
+"hello" contiene un caracter desconocido.
+```
+
+## Notas
+- El programa ignora espacios y saltos de línea.
+- Si ingresas caracteres desconocidos, el sistema lo notificará.
+- Puedes modificar las expresiones regulares en el código para adaptarlas a otros formatos de números.
+
+
+
+
+
+
+
+
 
 
 
