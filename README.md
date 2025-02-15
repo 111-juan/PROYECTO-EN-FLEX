@@ -129,6 +129,87 @@ Puedes agregar más palabras modificando el archivo `.l` y añadiendo nuevas reg
 ```
 Luego, recompila el programa siguiendo los pasos anteriores.
 
+### EJERCICIO 3
+
+# Analizador Léxico para una Calculadora Simple
+
+Este proyecto define un **analizador léxico** utilizando **Flex**, que reconoce tokens para una calculadora simple y los imprime.
+
+## Características
+- Reconoce operadores aritméticos básicos: `+`, `-`, `*`, `/`
+- Detecta el símbolo de valor absoluto: `|`
+- Identifica números enteros
+- Maneja correctamente las nuevas líneas
+- Ignora espacios y tabulaciones
+- Reporta caracteres no reconocidos
+
+## Cómo Funciona
+Cada token es reconocido por un patrón y mapeado a una acción correspondiente:
+
+- `+` → Imprime `PLUS`
+- `-` → Imprime `MINUS`
+- `*` → Imprime `TIMES`
+- `/` → Imprime `DIVIDE`
+- `|` → Imprime `ABS`
+- `[0-9]+` → Imprime `NUMBER <valor>`
+- `\n` → Imprime `NEWLINE`
+- `[ \t]` → Ignorado (manejo de espacios y tabulaciones)
+- `.` → Imprime `Mystery character <valor>` para caracteres no reconocidos
+
+## Instalación y Uso
+### Prerrequisitos
+- **Flex** (Generador de Analizadores Léxicos Rápidos)
+- **GCC** (para compilar el archivo C generado)
+
+### Pasos para Compilar y Ejecutar
+1. **Instalar Flex** (si no está instalado):
+   ```sh
+   sudo apt-get install flex   # Debian/Ubuntu
+   sudo dnf install flex       # Fedora
+   brew install flex           # macOS (Homebrew)
+   ```
+
+2. **Guardar el código en un archivo**, por ejemplo, `calculadora.l`.
+
+3. **Generar el código fuente en C utilizando Flex:**
+   ```sh
+   flex calculadora.l
+   ```
+   Esto creará un archivo `lex.yy.c`.
+
+4. **Compilar el archivo C generado:**
+   ```sh
+   gcc lex.yy.c -o calculadora -lfl
+   ```
+
+5. **Ejecutar el programa:**
+   ```sh
+   ./calculadora
+   ```
+   Luego, ingrese expresiones matemáticas y presione **Enter** para ver la salida tokenizada.
+
+### Ejemplo de Entrada y Salida
+#### **Entrada:**
+```
+3 + 5 * 10
+```
+#### **Salida:**
+```
+NUMBER 3
+PLUS
+NUMBER 5
+TIMES
+NUMBER 10
+NEWLINE
+```
+
+## Personalización
+- Modifique las acciones de los tokens en el archivo `.l` para ajustarlas a necesidades específicas.
+- Extienda con operadores adicionales, números de punto flotante o variables.
+
+
+
+
 
 
 
