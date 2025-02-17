@@ -1,3 +1,11 @@
+#INTEGRANTES
+JUAN BALAGUERA
+JUAN BELTRAN
+NICOLAS GARZON
+MATEO HIDALGO
+
+
+
 ### EJERCICIO 1
 # Contador de Palabras, Caracteres y Líneas en Flex
 
